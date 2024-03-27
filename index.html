@@ -12,19 +12,38 @@
   <title>channel twenty</title>
   
   
-  <script type="module" crossorigin src="/assets/index-0581faf6.js"></script>
-  <link rel="stylesheet" href="/assets/index-f21cfba6.css">
+  <link rel="stylesheet" href="/assets/index-b75a7663.css">
 </head>
 
 <body style="max-width: 1300px;margin: auto;">
   <div id="root"></div>
 
-
   <script src="https://kit.fontawesome.com/85f9b80b44.js" crossorigin="anonymous"></script>
-  
+  <!-- <script type="module" src="/src/main.jsx"></script> -->
   <script src="/styles/jquery.min.js"></script>
   <script src="/styles/bootstrap.bundle.min.js"></script>
   <script src="/styles/admin.min.js"></script>
+
+  <script>
+    fetch('https://api.channeltwenty.com/api/article/lksheepure-bahuble-biyer-dabite-premiker-barite-premikar-onshn')
+      .then(response => response.json())
+      .then(data => {
+        // Update meta tags dynamically with fetched data
+        document.querySelector('meta[property="og:title"]').setAttribute("content", "data.title");
+        document.querySelector('meta[property="og:description"]').setAttribute("content", 'data.description');
+        document.querySelector('meta[property="og:image"]').setAttribute("content", 'data.imageUrl');
+        // Add more meta tags as needed
+
+        // Render the React application after fetching data
+        const script = document.createElement('script');
+        script.src = '/src/main.jsx';
+        document.body.appendChild(script);
+      })
+      .catch(error => {
+        console.error('Error fetching initial data:', error);
+      });
+  </script>
+
 </body>
 
 </html>
